@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Автомобили — 140 лет в дороге</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=Unbounded:wght@500;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f2fa;--ink:#1b1733;--muted:#5a5575;--card:#fff;--line:#d8d3ea;--car:#d62839;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17142e;--ink:#ece9fb;--muted:#aaa5c8;--card:#221e42;--line:#37326a}}
+:root[data-theme="dark"]{--bg:#17142e;--ink:#ece9fb;--muted:#aaa5c8;--card:#221e42;--line:#37326a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 Onest,system-ui,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.speed{font-family:Unbounded,"Arial Black",Impact,sans-serif}
+.hero{position:relative;height:min(100svh,820px);min-height:540px;overflow:hidden;background:#1f2a6b}
+.scene{position:absolute;inset:0;width:100%;height:100%}
+.copy{position:relative;z-index:2;padding:clamp(1.25rem,4vw,3rem);max-width:44rem;color:#fff}
+.hero h1{font-weight:800;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 .9rem}
+.hero p{margin:0;max-width:32ch;font-size:1.125rem;color:#f6efff}
+.panel{position:absolute;z-index:2;left:50%;bottom:max(1rem,env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(92%,30rem);display:flex;align-items:center;gap:1.1rem;padding:.8rem 1.2rem;border-radius:1rem;background:rgba(22,18,52,.74);backdrop-filter:blur(8px);color:#fff;box-sizing:border-box}
+.speed{font-weight:800;font-size:2rem;line-height:1;min-width:6.2ch;font-variant-numeric:tabular-nums}
+.speed small{font:500 .8rem Onest,sans-serif;margin-left:.3rem;color:#d9d2f5}
+.ctl{flex:1;display:grid;gap:.2rem}
+.ctl label{font-size:.9rem;color:#e6e0fa}
+.ctl input{width:100%;margin:0;accent-color:var(--car);height:1.5rem}
+.wrap{max-width:68rem;margin:0 auto;padding:clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,3rem) 0}
+.wrap+.wrap{padding-bottom:0}
+h2{font-weight:800;font-size:clamp(1.4rem,3.2vw,2.2rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 .6rem}
+.lead{margin:0;color:var(--muted);max-width:58ch}
+.tl{list-style:none;padding:0;margin:2rem 0 0}
+.tl li{display:grid;grid-template-columns:minmax(5.5rem,9rem) 1fr;gap:.5rem 2rem;padding:1.25rem 0;border-top:1px solid var(--line)}
+.yr{font:800 clamp(1.4rem,3vw,2rem)/1.2 Unbounded,sans-serif;color:var(--car);transition:color .3s}
+.tl h3{font:500 1.15rem/1.3 Onest,sans-serif;font-weight:500;margin:0 0 .25rem}
+.tl p{margin:0;color:var(--muted);max-width:60ch}
+.pick{display:grid;grid-template-columns:minmax(12rem,16rem) 1fr;gap:2rem;margin-top:2rem}
+#tabs{display:flex;flex-direction:column;gap:.5rem}
+.tab{font:500 1rem Onest,sans-serif;text-align:left;padding:.9rem 1rem;border:1px solid var(--line);border-radius:.75rem;background:var(--card);color:var(--ink);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.tab[aria-selected="true"]{background:var(--car);color:#fff;border-color:var(--car)}
+.tab:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1.5rem}
+.prev{display:block;width:min(100%,19rem);height:auto;margin:0 0 .5rem}
+.card h3{font:800 1.3rem Unbounded,sans-serif;margin:0 0 .4rem}
+.card p{margin:0 0 1rem;color:var(--muted);max-width:56ch}
+.bar{display:grid;grid-template-columns:8.5rem 1fr 3ch;gap:.75rem;align-items:center;margin:.6rem 0}
+.track{height:.6rem;border-radius:99px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--car);border-radius:inherit;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.bar b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--muted)}
+.bodyfill{fill:var(--car);transition:fill .3s}
+.enter{animation:enter 1.9s cubic-bezier(.2,.75,.2,1) both}
+@keyframes enter{from{transform:translateX(-780px)}}
+footer{max-width:68rem;margin:0 auto;padding:3rem clamp(1.25rem,4vw,3rem) 3rem;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){
+ .pick{grid-template-columns:1fr;gap:1rem}
+ #tabs{flex-direction:row;flex-wrap:wrap}
+ .tab{flex:1 1 auto;text-align:center}
+ .bar{grid-template-columns:6.8rem 1fr 3ch}
+ .tl li{grid-template-columns:1fr}
+ .speed{min-width:5.6ch;font-size:1.6rem}
+}
+@media (prefers-reduced-motion:reduce){.enter{animation:none}.fill{transition:none}}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.chips .tab{padding:.5rem .95rem;border-radius:99px;font-size:.95rem}
+.tab[aria-pressed="true"]{background:var(--car);color:#fff;border-color:var(--car)}
+.tm{margin-top:2rem;padding:1.25rem;border:1px dashed var(--line);border-radius:1.25rem;background:var(--card)}
+.tm label{display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.tm input{width:100%;accent-color:var(--car);height:1.5rem;margin:.6rem 0 0}
+.vwc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.5rem;margin-top:1.5rem;align-items:start}
+.ph{border-radius:1rem;overflow:hidden;background:var(--bg);display:grid;gap:.3rem;align-content:start}
+.ph img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.ph small{font-size:.75rem;color:var(--muted);padding:.2rem .6rem .5rem}.ph a{color:inherit}
+.vwc .prev{width:100%;padding:1rem;box-sizing:border-box}
+.yrs{font-weight:500;color:var(--car)!important}
+.price{font:800 1.3rem Unbounded,sans-serif;color:var(--car);margin:.2rem 0 1rem}
+.fact{border-left:4px solid var(--car);padding:.5rem .9rem;background:var(--bg);border-radius:0 .6rem .6rem 0}
+@media (max-width:760px){.vwc{grid-template-columns:1fr}}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s}
+.slide.on{opacity:1;animation:kb 9s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.14) translateX(-2%)}}
+.shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,8,30,.82),rgba(10,8,30,.15) 75%),linear-gradient(0deg,rgba(10,8,30,.7),transparent 45%)}
+.hero .copy>*{animation:up .9s both}.hero h1{animation-delay:.1s}.hero p{animation-delay:.3s}.hero .btns{animation-delay:.5s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}}
+.btns{margin-top:1.4rem!important;display:flex;gap:.7rem;flex-wrap:wrap}
+.cta{display:inline-block;padding:.8rem 1.4rem;border-radius:99px;background:#e11d48;color:#fff;text-decoration:none;font:500 1rem Onest,sans-serif;border:2px solid #e11d48;cursor:pointer;transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}.cta.ghost{background:transparent;border-color:#fff}
+.cap{position:absolute;z-index:2;left:clamp(1.25rem,4vw,3rem);bottom:1rem;color:#e6e0fa;font-size:.8rem}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1rem}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1.2rem}
+.stats b{display:block;font:800 clamp(1.8rem,4vw,2.6rem) Unbounded,sans-serif;color:var(--car)}.stats span{color:var(--muted)}
+.gal{display:grid;gap:1rem}.ph[hidden]{display:none}
+.fadein{animation:fi .9s both}@keyframes fi{from{opacity:0;transform:scale(1.05)}}
+.spot{position:relative;overflow:hidden;border-radius:1.5rem;padding:clamp(1.5rem,4vw,3rem);background:#0c0c12;color:#f2f0fa}
+.spot>*{position:relative}.spot .lead,.spot li{color:#c5c0dd}.spot h3{font:500 1.1rem Onest,sans-serif;margin:1.6rem 0 .4rem}
+.shine{position:absolute!important;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.09) 50%,transparent 60%);transform:translateX(-100%);animation:shine 6s infinite}
+@keyframes shine{to{transform:translateX(100%)}}
+.eyebrow{color:#e11d48;font-weight:500;margin:0 0 .4rem;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.8rem;margin-top:1.4rem}
+.specs div{border:1px solid #2c2a45;border-radius:1rem;padding:.9rem}.specs b{display:block;font:800 1.05rem Unbounded,sans-serif}.specs span{font-size:.85rem;color:#a9a4c6}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.slide.on,.shine,.hero .copy>*,.fadein{animation:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <g id="wheel"><circle r="28" fill="#10111c"/><circle r="18" fill="#c9cde6"/><circle r="6" fill="#10111c"/><path d="M0-18V18M-18 0H18M-12.7-12.7L12.7 12.7M-12.7 12.7L12.7-12.7" stroke="#10111c" stroke-width="3"/><circle cy="-23" r="2" fill="#fff"/></g>
+ <g id="body">
+  <path class="bodyfill" d="M10 480C10 462 30 455 70 450L120 440C140 418 170 405 205 405C240 405 262 420 278 445L292 452C300 456 302 470 300 480V503H10Z"/>
+  <path d="M20 470C80 462 200 462 296 468" stroke="#fff" stroke-opacity=".28" stroke-width="3" fill="none"/>
+  <path d="M128 443C146 423 172 414 202 414C230 414 246 427 258 445Z" fill="#1c2352" opacity=".92"/>
+  <path d="M197 414V500" stroke="#000" stroke-opacity=".3" stroke-width="2"/>
+  <path d="M41 503V495A34 34 0 0 1 109 495V503ZM201 503V495A34 34 0 0 1 269 495V503Z" fill="#10111c"/>
+  <path d="M284 462L298 466V474L282 472Z" fill="#fff3b0"/>
+  <rect x="9" y="462" width="9" height="8" rx="2" fill="#ff4d5a"/>
+ </g>
+</defs></svg>
+
+<header class="hero">
+ <div class="slides" id="slides" aria-hidden="true"></div><div class="shade"></div>
+ <div class="copy">
+  <h1>Автомобили: 140 лет в дороге</h1>
+  <p>От Жука до Touareg: фото, салоны, характеристики и цены Volkswagen.</p>
+  <p class="btns"><a class="cta" href="#vw">Открыть каталог</a> <a class="cta ghost" href="#touareg">Touareg рестайлинг</a></p>
+ </div>
+ <div class="cap" id="slcap"></div>
+</header>
+
+<main>
+ <section class="wrap"><div class="stats"><div><b data-n="21.5" data-d="1" data-s=" млн">21,5 млн</b><span>Beetle Type 1 с 1938 года</span></div><div><b data-n="35" data-s="+ млн">35+ млн</b><span>Golf всех поколений</span></div><div><b data-n="30" data-s="+ млн">30+ млн</b><span>Passat с 1973 года</span></div></div></section>
+ <section class="wrap">
+  <h2>Вехи автомобильной истории</h2>
+  <p class="lead">Пять событий, которые изменили то, как мы ездим.</p>
+  <ol class="tl">
+   <li><span class="yr">1886</span><div><h3>Карл Бенц патентует Motorwagen</h3><p>Трёхколёсная повозка с бензиновым двигателем считается первым автомобилем.</p></div></li>
+   <li><span class="yr">1908</span><div><h3>Ford Model T</h3><p>Простая и недорогая машина. С 1913 года Ford собирает её на конвейере, и автомобиль становится доступным миллионам людей.</p></div></li>
+   <li><span class="yr">1959</span><div><h3>Трёхточечный ремень безопасности</h3><p>Инженер Volvo Нильс Болин создаёт новый ремень, а компания открывает патент для всех производителей.</p></div></li>
+   <li><span class="yr">1997</span><div><h3>Toyota Prius</h3><p>Первый серийный гибрид показал, что бензиновый и электрический моторы могут работать вместе.</p></div></li>
+   <li><span class="yr">2008</span><div><h3>Tesla Roadster</h3><p>Серийный электромобиль с литий-ионной батареей и запасом хода более 300 км показал, что электричество может быть быстрым и дальнобойным.</p></div></li>
+  </ol>
+ </section>
+
+ <section class="wrap" id="vw">
+  <h2>Каталог Volkswagen</h2>
+  <p class="lead">Выберите модель и поколение, чтобы увидеть фото, характеристики и ориентировочную цену. Или отправьтесь в прошлое: двигайте год и смотрите, что продавал VW.</p>
+  <div class="tm">
+   <label for="yr"><span>Машина времени:</span> <b id="yro" class="yr">1974</b></label>
+   <input id="yr" type="range" min="1938" max="2026" value="1974">
+   <div id="onsale" class="chips" aria-live="polite"></div>
+  </div>
+  <div id="models" class="chips" role="group" aria-label="Модель"></div>
+  <div id="gens" class="chips" role="group" aria-label="Поколение"></div>
+  <div class="card vwc" id="card" aria-live="polite">
+   <div class="gal"><div id="ph" class="ph"></div><div id="ph2" class="ph" hidden></div></div>
+   <div>
+    <h3 id="tn"></h3>
+    <p id="ty" class="yrs"></p>
+    <p id="td"></p>
+    <div class="price" id="tp"></div>
+    <p class="fact" id="tf"></p>
+    <button type="button" class="tab" id="rnd">🎲 Удиви меня</button>
+   </div>
+  </div>
+ </section>
+ <section class="wrap" id="touareg"><div class="spot"><div class="shine"></div>
+  <p class="eyebrow">Особый герой</p>
+  <h2>Touareg I рестайлинг: чёрный, топовая версия</h2>
+  <p class="lead">Рестайлинговый Touareg 7L выпускали с 2007 по 2010 год. Его часто называют «2008 года». Чёрный перламутр Deep Black (код LC9X) делает его особенно строгим.</p>
+  <div class="specs"><div><b>2007–2010</b><span>годы выпуска</span></div><div><b>до 350 л.с.</b><span>4.2 FSI V8; есть 3.6 FSI, 3.0 TDI и V10 TDI</span></div><div><b>4XMotion</b><span>постоянный полный привод</span></div><div><b>€7–14 тыс.</b><span>топ в хорошем состоянии (ориентир)</span></div></div>
+  <h3>Что обычно входит в топовую комплектацию</h3>
+  <ul><li>пневмоподвеска и регулируемый клиренс</li><li>биксенон, кожаный салон, панорамная крыша</li><li>навигация, камера и датчики парковки, мультимедиа</li></ul>
+  <p class="lead">Точный состав у каждой машины свой, его надо проверять по VIN и PR-кодам.</p>
+  <h3>Что проверять при покупке</h3>
+  <ul><li>пневмоподвеска: стойки, компрессор, утечки</li><li>раздаточная коробка и привод, работа блокировок</li><li>система охлаждения и сервисная история</li><li>электроника и сообщения об ошибках</li></ul>
+  <p class="btns"><button type="button" class="cta" id="goT">Фото и салон в каталоге</button> <a class="cta ghost" target="_blank" rel="noopener" href="https://commons.wikimedia.org/w/index.php?search=Volkswagen+Touareg+black&ns6=1">Больше фото на Commons</a></p>
+ </div></section>
+ <section class="wrap"><h2>Какой Volkswagen ваш?</h2><p class="lead">Три вопроса, и мы подберём модель.</p><div class="card" id="quiz" style="margin-top:1.5rem"></div></section>
+</main>
+
+<footer>Цены ориентировочные (рынок Европы, евро) и зависят от состояния, пробега и комплектации. Характеристики округлены. Фото подгружаются из Wikipedia / Wikimedia Commons.</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+
+
+const M=[
+{n:'Beetle',q:'Beetle',c:'#b45309',f:'Type 1 выпускали 65 лет и собрали более 21 млн штук — это один из самых массовых автомобилей в истории.',g:[['Type 1',1938,2003,'Задний воздушный оппозитный мотор 1.1–1.6 л, 25–50 л.с.','Коллекционный: €8–30 тыс.'],['New Beetle',1997,2010,'Передний мотор 1.4–2.0 л, 75–150 л.с.; RSI 3.2 — 225 л.с.','С пробегом: €3–8 тыс.'],['A5',2011,2019,'1.2–2.0 TSI и TDI, 105–210 л.с.; хэтчбек и кабриолет','С пробегом: €8–16 тыс.']]},
+{n:'Golf',q:'Golf',c:'#2563eb',f:'Первый Golf GTI 1976 года (110 л.с.) создал класс «горячих хэтчбеков».',g:[['Mk1',1974,1983,'1.1–1.8 л, 50–110 л.с.; хэтчбек 3/5 дв., кабриолет','Коллекционный: €5–20 тыс.'],['Mk2',1983,1992,'1.3–1.8 л, 55–160 л.с. (G60); Syncro 4×4','€3–15 тыс.'],['Mk3',1991,1997,'1.4–2.8 л, 55–174 л.с. (VR6); 1.9 TDI','€2–8 тыс.'],['Mk4',1997,2003,'1.4–2.8 л, 75–241 л.с. (R32); 1.9 TDI','€2–7 тыс.'],['Mk5',2003,2008,'1.4–3.2 л, 80–250 л.с.; GTI 200 л.с.; DSG','€3–9 тыс.'],['Mk6',2008,2012,'1.2–2.0 л TSI/TDI, 85–270 л.с. (Golf R)','€5–11 тыс.'],['Mk7',2012,2019,'1.0–2.0 л, 85–310 л.с.; e-Golf и GTE','С пробегом: €10–22 тыс.'],['Mk8',2019,0,'1.0–2.0 л, мягкий гибрид, 90–320 л.с.; GTI и R','Новый: €28–55 тыс.']]},
+{n:'Polo',q:'Polo',c:'#0f766e',f:'Polo начинался в 1975 году как переименованная Audi 50.',g:[['Mk1',1975,1981,'0.9–1.3 л, 40–60 л.с.','Коллекционный: €3–8 тыс.'],['Mk2',1981,1994,'1.0–1.3 л, 40–115 л.с. (G40); купе Coupé','€2–6 тыс.'],['Mk3',1994,2002,'1.0–1.6 л и 1.9 D, 45–120 л.с.','€1,5–4 тыс.'],['Mk4',2001,2009,'1.2–1.8 л и 1.4–1.9 TDI, 55–150 л.с.','€2–5 тыс.'],['Mk5',2009,2017,'1.0–1.4 л TSI/TDI, 60–192 л.с. (GTI)','С пробегом: €5–11 тыс.'],['Mk6',2017,0,'1.0 л MPI/TSI, 80–207 л.с. (GTI)','Новый: €18–30 тыс.']]},
+{n:'Passat',q:'Passat',c:'#7c3aed',f:'Passat выпускают с 1973 года, и за это время проданы десятки миллионов машин.',g:[['B1',1973,1980,'1.3–1.6 л, 55–85 л.с.; дизель с 1976 года','Коллекционный: €5–15 тыс.'],['B2',1980,1988,'1.3–1.9 л, 55–115 л.с.; Santana','€2–8 тыс.'],['B3',1988,1993,'1.6–2.0 л и VR6 (174 л.с.), турбодизель','€1,5–5 тыс.'],['B4',1993,1997,'1.6–2.8 л, 75–174 л.с.; 1.9 TDI','€1,5–4 тыс.'],['B5',1996,2005,'1.6–2.8 л, W8 4.0 — 275 л.с.; Syncro','€1,5–5 тыс.'],['B6',2005,2010,'1.4–3.6 л, 80–300 л.с.; седан и Variant','€3–7 тыс.'],['B7',2010,2014,'1.4–3.6 л TSI/TDI, 105–300 л.с.','€6–11 тыс.'],['B8',2014,2023,'1.4–2.0 л, 120–272 л.с.; гибрид GTE','С пробегом: €14–28 тыс.'],['B9',2023,0,'Только универсал: 1.5 eTSI, 2.0 TDI, подзаряжаемый гибрид','Новый: €45–60 тыс.']]},
+{n:'Tiguan',q:'Tiguan',c:'#1c7f55',f:'Tiguan — самый продаваемый кроссовер Volkswagen и один из главных в Европе.',g:[['I',2007,2016,'1.4–2.0 л TSI/TDI, 122–210 л.с.; полный привод 4Motion','€5–13 тыс.'],['II',2016,2024,'1.5–2.0 л, 115–240 л.с.; Allspace с 7 местами','С пробегом: €18–32 тыс.'],['III',2024,0,'1.5 eTSI, 2.0 TDI, подзаряжаемый гибрид','Новый: €40–55 тыс.']]},
+{n:'Touareg',q:'Touareg',c:'#334155',f:'Touareg построен на общей платформе с Porsche Cayenne.',g:[['I',2002,2006,'2.5 TDI, 3.2 V6, 4.2 V8, V10 TDI 313 л.с., W12 450 л.с.; пневмоподвеска','€3–8 тыс.'],['I рестайлинг',2007,2010,'3.6 FSI 280, 4.2 FSI 350, 3.0 TDI 225, V10 TDI 313 л.с.; 4XMotion, пневмоподвеска','Топ в состоянии: €7–14 тыс.','Volkswagen Touareg 2008 black'],['II',2010,2018,'3.0 V6 TDI, 3.6 FSI, гибрид Hybrid','€10–22 тыс.'],['III',2018,0,'3.0 V6 TDI/TSI, гибрид R — 462 л.с.','Новый: €65–90 тыс.']]},
+{n:'Scirocco',q:'Scirocco',c:'#d62839',f:'Дизайн первого Scirocco нарисовал Джорджетто Джуджаро.',g:[['I',1974,1981,'1.1–1.6 л, 50–110 л.с.','Коллекционный: €6–18 тыс.'],['II',1981,1992,'1.3–1.8 л, 60–139 л.с.; 16V','€4–12 тыс.'],['III',2008,2017,'1.4–2.0 л TSI/TDI, 122–280 л.с. (R)','€8–18 тыс.']]},
+{n:'Transporter',q:'Transporter',c:'#c2410c',f:'T1 «Бульдог» стал символом хиппи-эпохи и фургоном для путешествий.',g:[['T1',1950,1967,'Задний мотор 1.1–1.5 л, 25–52 л.с.','Коллекционный: €40–120 тыс.'],['T2',1967,1979,'1.6–2.0 л, 47–70 л.с.','€15–45 тыс.'],['T3',1979,1992,'1.6–2.1 л и дизель, 50–112 л.с.','€8–25 тыс.'],['T4',1990,2003,'2.0–2.8 л VR6 и TDI, 60–204 л.с.','€4–12 тыс.'],['T5',2003,2015,'1.9–3.2 л, 85–235 л.с.; Multivan, California','€6–18 тыс.'],['T6',2015,2024,'2.0 TDI/TSI, 84–204 л.с.','С пробегом: €25–50 тыс.']]},
+{n:'Up!',q:'Up!',c:'#0284c7',f:'Крошечный Up! вдохновил также «двойников» Škoda Citigo и SEAT Mii.',g:[['Up!',2011,2023,'1.0 л, 60–115 л.с. (GTI); вариант e-up!','€5–11 тыс.']]},
+{n:'T-Roc',q:'T-Roc',c:'#be185d',f:'T-Roc выпускается и в кабриолете — редкость среди кроссоверов.',g:[['T-Roc',2017,0,'1.0–2.0 л TSI/TDI, 110–300 л.с. (R)','Новый: €27–40 тыс.']]},
+{n:'ID.3',q:'ID.3',c:'#0ea5e9',f:'ID.3 открыл электрическую линейку ID. и, как сообщалось, построен на платформе MEB.',g:[['ID.3',2019,0,'Батарея 45–79 кВт·ч, 170–326 л.с., запас хода до 550 км','Новый: €32–45 тыс.']]},
+{n:'ID.4',q:'ID.4',c:'#4f46e5',f:'ID.4 — первый электрический кроссовер Volkswagen для мирового рынка.',g:[['ID.4',2020,0,'Батарея 52–77 кВт·ч, 170–340 л.с., запас хода до 550 км','Новый: €40–55 тыс.']]},
+{n:'ID. Buzz',q:'ID. Buzz',c:'#ca8a04',f:'ID. Buzz возрождает дух легендарного Bulli в электрической версии.',g:[['ID. Buzz',2022,0,'Батарея 77–86 кВт·ч, 204–340 л.с., запас хода около 420 км','Новый: €60–75 тыс.']]}
+];
+M.push(
+{n:'Jetta',q:'Jetta',c:'#475569',f:'Jetta — это Golf с багажником: седан на той же платформе.',g:[['A1–A2',1979,1992,'1.1–1.8 л, 50–139 л.с.','€2–8 тыс.'],['A3–A5 (Vento/Bora)',1992,2010,'1.4–2.8 л VR6, TDI, 75–200 л.с.','€1,5–6 тыс.','Volkswagen Bora'],['A6',2010,2018,'1.2–2.0 л TSI/TDI, 105–210 л.с.; гибрид','€5–12 тыс.'],['A7',2018,0,'1.4 TSI 150 л.с.; продаётся в основном в США и Китае','около €25 тыс.']]},
+{n:'Arteon',q:'Arteon',c:'#9f1239',f:'Arteon пришёл на смену Passat CC и ловко притворяется купе.',g:[['Arteon',2017,2024,'1.5–2.0 л TSI/TDI, 150–320 л.с. (R); лифтбек и Shooting Brake','€20–40 тыс.']]},
+{n:'CC',q:'Passat CC',c:'#6d28d9',f:'CC стал первым четырёхдверным «купе» от Volkswagen.',g:[['CC',2008,2017,'1.8–3.6 л, 160–300 л.с.; 4Motion','€6–15 тыс.']]},
+{n:'Phaeton',q:'Phaeton',c:'#1e293b',f:'Phaeton собирали на «Прозрачной фабрике» в Дрездене.',g:[['Phaeton',2002,2016,'3.0 V6 TDI 225, 4.2 V8, W12 420 л.с.; пневмоподвеска','€6–20 тыс.']]},
+{n:'Corrado',q:'Corrado',c:'#b91c1c',f:'У Corrado задний спойлер выдвигается автоматически.',g:[['Corrado',1988,1995,'1.8 G60 160 л.с., VR6 190 л.с.','€6–20 тыс.']]},
+{n:'Karmann Ghia',q:'Karmann Ghia',c:'#db2777',f:'Дизайн нарисовала итальянская Ghia, а собирала немецкая Karmann.',g:[['Type 14',1955,1974,'Воздушный мотор 1.2–1.6 л, 30–50 л.с.; купе и кабриолет','Коллекционный: €15–40 тыс.']]},
+{n:'Lupo',q:'Lupo',c:'#65a30d',f:'Lupo 3L TDI расходовал около 3 л на 100 км.',g:[['Lupo',1998,2005,'1.0–1.6 л, 50–125 л.с. (GTI); 1.2 TDI 61 л.с.','€1–4 тыс.']]},
+{n:'Fox',q:'Fox',c:'#ea580c',f:'Fox — простой бюджетный городской малыш для развивающихся рынков.',g:[['Fox',2005,2011,'1.2–1.4 л, 55–75 л.с.','€1,5–4 тыс.']]},
+{n:'Sharan',q:'Sharan',c:'#0d9488',f:'Первый Sharan разработан вместе с Ford Galaxy и SEAT Alhambra.',g:[['I',1995,2010,'1.8–2.8 л VR6, 1.9 TDI; 7 мест','€2–6 тыс.'],['II',2010,2022,'1.4 TSI–2.0 TDI, 110–220 л.с.','€10–22 тыс.']]},
+{n:'Touran',q:'Touran',c:'#2563eb',f:'Touran — компактвэн с 7 местами и сдвижными сиденьями.',g:[['I',2003,2015,'1.4 TSI–2.0 TDI, 90–170 л.с.','€3–9 тыс.'],['II',2015,0,'1.2 TSI–2.0 TDI, 110–190 л.с.','Новый: €30–42 тыс.']]},
+{n:'Caddy',q:'Caddy',c:'#a16207',f:'Caddy — рабочая лошадка и семейный фургон в одном флаконе.',g:[['III',2003,2015,'1.2 TSI–2.0 TDI, 75–140 л.с.','€3–8 тыс.'],['IV',2015,2020,'1.0 TSI–2.0 TDI, 75–150 л.с.','€10–18 тыс.'],['V',2020,0,'1.5 TSI, 2.0 TDI; платформа MQB','Новый: €28–40 тыс.']]},
+{n:'Amarok',q:'Amarok',c:'#15803d',f:'Новый Amarok построен на платформе Ford Ranger.',g:[['I',2010,2022,'2.0 TDI 122–204 л.с., 3.0 V6 TDI 224–258 л.с.','€15–30 тыс.'],['II',2022,0,'2.0 TDI, 3.0 V6 TDI; на базе Ford Ranger','Новый: €45–60 тыс.']]},
+{n:'T-Cross',q:'T-Cross',c:'#e11d48',f:'T-Cross — самый компактный кроссовер Volkswagen в Европе.',g:[['T-Cross',2018,0,'1.0 TSI 95–115 л.с.','Новый: €18–28 тыс.']]},
+{n:'Taigo',q:'Taigo',c:'#c026d3',f:'Taigo — городской кроссовер-купе на платформе Polo.',g:[['Taigo',2021,0,'1.0 TSI 95–110 л.с.','Новый: €23–30 тыс.']]},
+{n:'ID.7',q:'ID.7',c:'#0891b2',f:'ID.7 — электрический лифтбек, заявленный запас хода до 700 км.',g:[['ID.7',2023,0,'Батарея 77–86 кВт·ч, до 286 л.с., запас хода до 700 км','Новый: €56–65 тыс.']]},
+{n:'Atlas',q:'Atlas',c:'#78350f',f:'Atlas сделан для американского рынка и больше любого европейского Volkswagen.',g:[['Atlas',2017,0,'2.0 TSI 235 л.с., V6; 7 мест; в Европе не продаётся','В США: от $35 тыс.']]},
+{n:'Eos',q:'Eos',c:'#f59e0b',f:'У Eos складная стальная крыша со стеклянной вставкой.',g:[['Eos',2006,2015,'1.4–3.2 л, 122–250 л.с.','€4–10 тыс.']]}
+);
+const mods=$('#models'),gens=$('#gens'),ph=$('#ph'),yr=$('#yr'),ons=$('#onsale');
+const sil='<svg class="prev" viewBox="-10 392 320 140" role="img" aria-label="Силуэт автомобиля"><ellipse cx="155" cy="524" rx="150" ry="7" fill="#000" opacity=".18"/><use href="#body"/><use href="#wheel" transform="translate(75 495)"/><use href="#wheel" transform="translate(235 495)"/></svg>';
+const cache={};let req=0;
+async function photo(q){
+ if(q in cache)return cache[q];
+ try{
+  const r=await fetch('https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(q)+'&gsrlimit=4&prop=pageimages&piprop=thumbnail&pithumbsize=900&format=json&origin=*');
+  const j=await r.json();
+  const p=Object.values(j.query.pages).sort((a,b)=>a.index-b.index).find(p=>p.thumbnail);
+  return cache[q]=p?{src:p.thumbnail.source,title:p.title,page:'https://en.wikipedia.org/wiki/'+encodeURIComponent(p.title.replace(/ /g,'_'))}:null;
+ }catch(e){return null}
+}
+const mb=M.map((m,i)=>{const b=document.createElement('button');b.type='button';b.className='tab';b.textContent=m.n;b.onclick=()=>pick(i,0);mods.appendChild(b);return b});
+const ph2=$('#ph2'),INT=/interior|innenraum|cockpit|dashboard|armaturen|cabin|salon|innenansicht/i;
+async function commons(q,re,strict){
+ const k='c:'+q+(strict?'s':'');if(k in cache)return cache[k];
+ try{
+  const r=await fetch('https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrlimit=25&gsrsearch='+encodeURIComponent(q)+'&prop=imageinfo&iiprop=url|mime&iiurlwidth=900&format=json&origin=*');
+  const j=await r.json();
+  const a=Object.values(j.query.pages).filter(p=>p.imageinfo&&p.imageinfo[0].mime==='image/jpeg').sort((x,y)=>x.index-y.index);
+  const p=(re&&a.find(p=>re.test(p.title)))||(strict?null:a[0]);
+  return cache[k]=p?{src:p.imageinfo[0].thumburl,title:p.title,page:p.imageinfo[0].descriptionurl}:null;
+ }catch(e){return null}
+}
+function put(el,r,alt,id,label){
+ if(id!==req||!r)return;
+ const im=new Image();im.alt=alt;
+ im.onload=()=>{
+  if(id!==req)return;
+  const s=document.createElement('small');s.append(label+': ');
+  const a=document.createElement('a');a.href=r.page;a.target='_blank';a.rel='noopener';a.textContent='Wikimedia';
+  s.append(a);el.replaceChildren(im,s);el.hidden=false;im.classList.add('fadein');
+ };
+ im.src=r.src;
+}
+function pick(i,j){
+ const m=M[i],g=m.g[j],id=++req;
+ document.documentElement.style.setProperty('--car',m.c);
+ mb.forEach((b,k)=>b.setAttribute('aria-pressed',k===i));
+ gens.replaceChildren(...m.g.map((x,k)=>{const b=document.createElement('button');b.type='button';b.className='tab';b.textContent=x[0]+' · '+x[1];b.setAttribute('aria-pressed',k===j);b.onclick=()=>pick(i,k);return b}));
+ const nm='Volkswagen '+m.n+(m.g.length>1?' '+g[0]:'');
+ $('#tn').textContent=nm;
+ $('#ty').textContent=g[1]+'–'+(g[2]||'н.в.');
+ $('#td').textContent=g[3];$('#tp').textContent=g[4];$('#tf').textContent=m.f;
+ ph.innerHTML=sil;ph2.hidden=true;ph2.replaceChildren();
+ const q='Volkswagen '+m.q+(m.g.length>1?' '+g[0]:'');
+ (g[5]?commons(g[5]):photo(q)).then(r=>put(ph,r,nm,id,'Фото'));
+ commons(q+' interior',INT,true).then(r=>r||commons('Volkswagen '+m.q+' interior',INT,true)).then(r=>put(ph2,r,'Салон '+nm,id,'Салон'));
+}
+function onsale(){
+ const y=+yr.value;$('#yro').textContent=y;
+ const list=[];
+ M.forEach((m,i)=>m.g.forEach((g,j)=>{if(y>=g[1]&&y<=(g[2]||2026))list.push([i,j,m.n+' '+(m.g.length>1?g[0]:'')])}));
+ ons.replaceChildren(...list.map(([i,j,t])=>{const b=document.createElement('button');b.type='button';b.className='tab';b.textContent=t.trim();b.onclick=()=>pick(i,j);return b}));
+ if(!list.length)ons.textContent='В этом году выбранных моделей в каталоге нет.';
+}
+yr.addEventListener('input',onsale);
+$('#rnd').onclick=()=>{const i=Math.floor(Math.random()*M.length);pick(i,Math.floor(Math.random()*M[i].g.length))};
+const HS=[['Volkswagen Touareg','Touareg'],['Volkswagen Golf Mk1','Golf Mk1'],['Volkswagen Beetle','Beetle'],['Volkswagen Transporter T1','Transporter T1'],['Volkswagen ID. Buzz','ID. Buzz']];
+const sl=$('#slides'),cap=$('#slcap');let ss=[],si=0;
+Promise.all(HS.map(([q,n])=>photo(q).then(r=>r&&new Promise(res=>{const im=new Image();im.onload=()=>res({r,n});im.onerror=()=>res(null);im.src=r.src})))).then(a=>{
+ ss=a.filter(Boolean).map(({r,n})=>{const d=document.createElement('div');d.className='slide';d.style.backgroundImage='url("'+r.src+'")';sl.appendChild(d);return [d,n]});
+ if(!ss.length)return;
+ const go=()=>{ss.forEach(([d],k)=>d.classList.toggle('on',k===si));cap.textContent='Фото: Wikipedia · '+ss[si][1];si=(si+1)%ss.length};
+ go();if(ss.length>1)setInterval(go,6500);
+});
+function count(){document.querySelectorAll('.stats b').forEach(b=>{const n=+b.dataset.n,d=+(b.dataset.d||0),sf=b.dataset.s||'';let t0;const st=t=>{if(t0===undefined)t0=t;const k=Math.min((t-t0)/1600,1);b.textContent=(n*(1-Math.pow(1-k,3))).toFixed(d).replace('.',',')+sf;if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)})}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.querySelector('.stats'))count();io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.wrap').forEach(e=>{e.classList.add('rv');io.observe(e)});
+const ti=M.findIndex(m=>m.n==='Touareg');
+$('#goT').onclick=()=>{pick(ti,1);$('#vw').scrollIntoView({behavior:'smooth'})};
+const Q=[
+['Для чего вам машина?',[['Город и парковка',{Polo:2,'Up!':3,Golf:1,Taigo:1,'ID.3':1}],['Семья и дальние поездки',{Passat:2,Tiguan:2,Touran:2,Sharan:2,Caddy:1}],['Бездорожье и приключения',{Touareg:3,Amarok:3,Tiguan:1,Transporter:1,'ID. Buzz':1}],['Драйв и эмоции',{Golf:2,Scirocco:3,Corrado:3,Arteon:1}]]],
+['Какой двигатель?',[['Бензин',{Golf:1,Polo:1,'T-Roc':1,Scirocco:1}],['Дизель',{Touareg:2,Passat:1,Tiguan:1,Amarok:1}],['Электро',{'ID.3':3,'ID.4':3,'ID.7':3,'ID. Buzz':2}],['Хочу ретро-характер',{Beetle:3,'Karmann Ghia':3,Transporter:2}]]],
+['Какой бюджет?',[['До €10 тыс.',{Polo:2,Golf:1,Fox:2,Lupo:2,Touran:1}],['€10–30 тыс.',{Golf:1,Tiguan:1,'T-Roc':2,Passat:1,Arteon:1}],['Больше €30 тыс.',{Touareg:1,'ID.7':2,Phaeton:1,Arteon:1,'ID.4':1}]]]
+];
+let qi=0,sc={};
+function qz(){
+ const el=$('#quiz');el.replaceChildren();
+ const h=document.createElement('h3'),c=document.createElement('div');c.className='chips';
+ if(qi>=Q.length){
+  const best=Object.entries(sc).sort((x,y)=>y[1]-x[1])[0][0];
+  h.textContent='Ваш Volkswagen — '+best;
+  const o=document.createElement('button');o.type='button';o.className='cta';o.textContent='Открыть в каталоге';
+  o.onclick=()=>{const i=M.findIndex(m=>m.n===best);pick(i,M[i].g.length-1);$('#vw').scrollIntoView({behavior:'smooth'})};
+  const r=document.createElement('button');r.type='button';r.className='tab';r.textContent='Пройти ещё раз';
+  r.onclick=()=>{qi=0;sc={};qz()};
+  c.append(o,r);
+ }else{
+  h.textContent=(qi+1)+'/'+Q.length+'. '+Q[qi][0];
+  Q[qi][1].forEach(([t,w])=>{const b=document.createElement('button');b.type='button';b.className='tab';b.textContent=t;b.onclick=()=>{for(const k in w)sc[k]=(sc[k]||0)+w[k];qi++;qz()};c.appendChild(b)});
+ }
+ el.append(h,c);
+}
+qz();
+onsale();pick(ti,1);
+})();
+</script>
+</body>
+</html>
